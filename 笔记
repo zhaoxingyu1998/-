@@ -1,1 +1,13 @@
-ggplot2
+R语言-ggplot2绘图
+
+library(ggplot2)
+p <- ggplot(diamonds) +                                           #通过aes来指定X，Y的变量
+  geom_point(aes(x = carat, y = price, color = cut)) +            #通过 geom_point()【散点图】 加入散点图层，aes（）也可放在geom_point中
+  labs(title = 'Scatterplot of carat and price',                  #修改图的标签可以用labs（）来完成
+       x = 'Carat', y = 'Price')
+p1 <- p + theme(plot.title = element_text(size=20, face="bold"),  #修改图的主题可以用theme（）来完成
+                axis.text.x = element_text(size=15),
+                axis.text.y = element_text(size=15),
+                axis.title.x = element_text(size=20),
+                axis.title.y = element_text(size=20))
+p2 <- p1 + scale_color_discrete(name = "Cut of diamonds")         #修改图例标题scale_color_discrete()
